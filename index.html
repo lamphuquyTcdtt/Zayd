@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lâm Phú Quý | Bio Link</title>
+
+<!-- ⚠️ Thay REPLACE_WITH_YOUR_DOMAIN bằng domain thật khi deploy (VD: https://bio.lamphuquy.vn/) -->
+<meta name="description" content="Lâm Phú Quý (Bé Quý Đồng Nai) — Web Developer &amp; Digital Creator. Xem dự án, mua source code, liên hệ tư vấn website.">
+<link rel="canonical" href="REPLACE_WITH_YOUR_DOMAIN">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Lâm Phú Quý | Bio Link">
+<meta property="og:description" content="Web Developer &amp; Digital Creator — Dự án, Source Code Store, liên hệ tư vấn website.">
+<meta property="og:image" content="https://cdn.upanhlaylink.com/i/3nmCg52L.jpg">
+<meta property="og:url" content="REPLACE_WITH_YOUR_DOMAIN">
+<meta property="og:site_name" content="Lâm Phú Quý Bio">
+<meta property="og:locale" content="vi_VN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lâm Phú Quý | Bio Link">
+<meta name="twitter:description" content="Web Developer &amp; Digital Creator — Dự án, Source Code Store, liên hệ tư vấn website.">
+<meta name="twitter:image" content="https://cdn.upanhlaylink.com/i/3nmCg52L.jpg">
+
+<link rel="icon" type="image/jpeg" href="https://cdn.upanhlaylink.com/i/3nmCg52L.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Lâm Phú Quý",
+  "alternateName": "Bé Quý Đồng Nai",
+  "url": "REPLACE_WITH_YOUR_DOMAIN",
+  "image": "https://cdn.upanhlaylink.com/i/3nmCg52L.jpg",
+  "jobTitle": "Web Developer",
+  "address": { "@type": "PostalAddress", "addressRegion": "Đồng Nai", "addressCountry": "VN" },
+  "sameAs": [
+    "https://www.facebook.com/share/19WeSZFMLb/",
+    "https://youtube.com/@bequydongnai",
+    "https://zalo.me/84817813259"
+  ]
+}
+</script>
+<style>
+  :root{
+    --bg-0:#05060a;
+    --bg-1:#0b0e17;
+    --cyan:#3ee8ff;
+    --purple:#9b5cff;
+    --magenta:#ff4fd8;
+    --blue-check:#2f9bff;
+    --text-hi:#eef2ff;
+    --text-lo:#8b93ab;
+    --glass:rgba(255,255,255,0.045);
+    --glass-brd:rgba(255,255,255,0.09);
+    --mono:'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,'Courier New',monospace;
+    --green:#4ffb92;
+  }
+  html[data-theme="light"]{
+    --bg-0:#f4f5fb;
+    --bg-1:#e9ebf6;
+    --text-hi:#181a24;
+    --text-lo:#5a5f78;
+    --glass:rgba(10,12,30,0.04);
+    --glass-brd:rgba(10,12,30,0.10);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; }
+  html,body{height:100%;}
+  #profile, #server-status, #links, #donate, #contact, #timeline, #share{ scroll-margin-top:56px; }
+  body{
+    font-family:'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    background:
+      radial-gradient(1100px 600px at 15% -10%, rgba(155,92,255,0.20), transparent 60%),
+      radial-gradient(900px 500px at 90% 10%, rgba(62,232,255,0.14), transparent 55%),
+      radial-gradient(800px 800px at 50% 110%, rgba(255,79,216,0.10), transparent 60%),
+      linear-gradient(180deg, var(--bg-0), var(--bg-1));
+    color:var(--text-hi);
+    min-height:100%;
+    display:flex;
+    justify-content:center;
+    overflow-x:hidden;
+    position:relative;
+  }
+  canvas#field{
+    position:fixed; inset:0; width:100%; height:100%; z-index:0; opacity:0.55;
+  }
+  .wrap{
+    position:relative; z-index:1;
+    width:100%; max-width:460px;
+    padding:0 22px 70px;
+    display:flex; flex-direction:column; align-items:center;
+  }
+
+  /* ---------- Terminal topbar ---------- */
+  .term-topbar{
+    width:100%; display:flex; align-items:center; justify-content:space-between;
+    padding:16px 2px; margin-bottom:34px;
+    font-family:var(--mono); font-size:10.5px; letter-spacing:0.5px;
+    color:var(--text-lo); border-bottom:1px solid var(--glass-brd);
+  }
+  .term-brand{ color:var(--text-hi); font-weight:600; }
+  .term-brand::before{ content:"[ "; color:var(--text-lo); }
+  .term-brand::after{ content:" ]"; color:var(--text-lo); }
+  .term-hire{ display:flex; align-items:center; gap:6px; text-transform:uppercase; }
+  .term-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--green);
+    box-shadow:0 0 8px var(--green);
+    animation:blink 1.6s ease-in-out infinite;
+  }
+  @keyframes blink{ 0%,100%{ opacity:1; } 50%{ opacity:0.25; } }
+  .term-right{ display:flex; align-items:center; gap:10px; }
+  .cmdk-hint{
+    display:flex; align-items:center; gap:5px;
+    padding:3px 7px; border-radius:6px; border:1px solid var(--glass-brd);
+    background:rgba(255,255,255,0.04); cursor:pointer;
+    color:var(--text-lo); font-size:10px;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .cmdk-hint:hover{ border-color:rgba(62,232,255,0.4); color:var(--text-hi); }
+  .theme-toggle{
+    display:flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:7px; cursor:pointer;
+    border:1px solid var(--glass-brd); background:rgba(255,255,255,0.04);
+    font-size:12.5px; line-height:1; color:var(--text-hi);
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .theme-toggle:hover{ border-color:rgba(62,232,255,0.4); transform:scale(1.06); }
+  .cmdk-hint kbd{
+    font-family:var(--mono); background:rgba(255,255,255,0.07);
+    border-radius:3px; padding:1px 4px; font-size:9.5px; color:var(--text-hi);
+  }
+
+  /* ---------- Typewriter tagline ---------- */
+  .tagline{
+    margin-top:14px; text-align:center; font-size:13px; line-height:1.7;
+    color:#b7bdd4; max-width:340px; font-family:var(--mono); min-height:52px;
+  }
+  .tagline .prompt{ color:var(--cyan); }
+  .tagline .cursor{
+    display:inline-block; width:7px; height:13px; margin-left:2px;
+    background:var(--cyan); vertical-align:-2px;
+    animation:blink 0.9s step-end infinite;
+  }
+
+  /* ---------- Command palette ---------- */
+  .cmdk-overlay{
+    position:fixed; inset:0; z-index:50;
+    background:rgba(4,6,12,0.65); backdrop-filter:blur(4px);
+    display:flex; align-items:flex-start; justify-content:center;
+    padding-top:14vh;
+    opacity:0; pointer-events:none; transition:opacity .15s ease;
+  }
+  .cmdk-overlay.open{ opacity:1; pointer-events:auto; }
+  .cmdk-modal{
+    width:92%; max-width:380px;
+    background:linear-gradient(180deg, #10131f, #0b0e17);
+    border:1px solid var(--glass-brd); border-radius:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(62,232,255,0.08);
+    overflow:hidden;
+    transform:translateY(-8px); transition:transform .15s ease;
+  }
+  .cmdk-overlay.open .cmdk-modal{ transform:translateY(0); }
+  .cmdk-input-row{
+    display:flex; align-items:center; gap:9px;
+    padding:13px 14px; border-bottom:1px solid var(--glass-brd);
+    font-family:var(--mono);
+  }
+  .cmdk-input-row svg{ width:14px; height:14px; color:var(--text-lo); flex:0 0 auto; }
+  .cmdk-input{
+    flex:1; background:none; border:none; outline:none;
+    color:var(--text-hi); font-family:var(--mono); font-size:13px;
+  }
+  .cmdk-input::placeholder{ color:var(--text-lo); }
+  .cmdk-esc{
+    font-size:9.5px; color:var(--text-lo); border:1px solid var(--glass-brd);
+    border-radius:4px; padding:1px 5px;
+  }
+  .cmdk-list{ max-height:280px; overflow-y:auto; padding:6px; }
+  .cmdk-item{
+    display:flex; align-items:center; gap:10px;
+    padding:10px 10px; border-radius:9px; cursor:pointer;
+    font-size:13px; color:var(--text-hi);
+  }
+  .cmdk-item .k-ico{ width:16px; height:16px; color:var(--cyan); flex:0 0 auto; }
+  .cmdk-item .k-sub{ margin-left:auto; font-size:10.5px; color:var(--text-lo); font-family:var(--mono); }
+  .cmdk-item.active{ background:rgba(62,232,255,0.10); }
+  .cmdk-empty{ padding:18px; text-align:center; font-size:12px; color:var(--text-lo); }
+
+  /* ---------- Easter egg ---------- */
+  .egg-overlay{
+    position:fixed; inset:0; z-index:60;
+    background:rgba(2,3,7,0.82); backdrop-filter:blur(6px);
+    display:flex; align-items:center; justify-content:center; padding:24px;
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+  }
+  .egg-overlay.open{ opacity:1; pointer-events:auto; }
+  .egg-box{
+    width:100%; max-width:340px; font-family:var(--mono);
+    border:1px solid rgba(62,232,255,0.35); border-radius:14px;
+    background:linear-gradient(180deg, rgba(155,92,255,0.08), rgba(11,14,23,0.98));
+    padding:22px 20px; text-align:center;
+    box-shadow:0 0 60px rgba(62,232,255,0.15);
+    transform:scale(0.94); transition:transform .25s ease;
+  }
+  .egg-overlay.open .egg-box{ transform:scale(1); }
+  .egg-tag{
+    font-size:10px; letter-spacing:2px; color:var(--magenta); margin-bottom:10px;
+  }
+  .egg-title{
+    font-size:16px; font-weight:700; color:var(--text-hi); margin-bottom:12px;
+    background:linear-gradient(90deg, var(--cyan), var(--purple));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .egg-body{ font-size:11.5px; line-height:1.9; color:var(--text-lo); text-align:left; }
+  .egg-body .line{ margin-bottom:2px; }
+  .egg-body .k{ color:var(--cyan); }
+  .egg-close{
+    margin-top:16px; width:100%; padding:9px; border-radius:9px;
+    border:1px solid var(--glass-brd); background:rgba(255,255,255,0.04);
+    color:var(--text-hi); font-family:var(--mono); font-size:11.5px; cursor:pointer;
+  }
+  .egg-close:hover{ border-color:rgba(62,232,255,0.4); }
+
+  /* ---------- Sticky nav bar ---------- */
+  .site-nav{
+    position:sticky; top:0; z-index:40;
+    width:100%; max-width:460px;
+    display:flex; gap:4px; overflow-x:auto;
+    padding:10px 2px; margin-top:2px;
+    background:rgba(6,8,14,0.72); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--glass-brd);
+    font-family:var(--mono); font-size:11px;
+    scrollbar-width:none;
+  }
+  .site-nav::-webkit-scrollbar{ display:none; }
+  .site-nav a{
+    flex:0 0 auto; text-decoration:none; color:var(--text-lo);
+    padding:6px 12px; border-radius:8px; letter-spacing:0.3px;
+    transition:color .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .site-nav a::before{ content:"// "; opacity:0.5; }
+  .site-nav a:hover{ color:var(--text-hi); background:rgba(255,255,255,0.05); }
+  .site-nav a.active{ color:var(--cyan); background:rgba(62,232,255,0.08); }
+
+  /* ---------- Timeline ---------- */
+  .timeline-section{ width:100%; margin-top:36px; }
+  .timeline-year{
+    font-family:var(--mono); font-size:12px; color:var(--cyan);
+    letter-spacing:2px; margin:10px 2px 12px;
+  }
+  .timeline-list{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .timeline-list li{
+    display:flex; align-items:center; gap:10px;
+    font-size:13px; color:var(--text-hi);
+    padding:10px 12px; border-radius:10px;
+    background:var(--glass); border:1px solid var(--glass-brd);
+  }
+  .t-dot{
+    width:7px; height:7px; border-radius:50%; flex:0 0 auto;
+    background:var(--cyan); box-shadow:0 0 8px var(--cyan);
+  }
+  .timeline-note{
+    margin-top:10px; font-family:var(--mono); font-size:10.5px;
+    color:var(--text-lo); opacity:0.7;
+  }
+
+  /* ---------- QR share ---------- */
+  .share-section{ width:100%; margin-top:36px; }
+  .share-card{
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    padding:22px; border-radius:16px;
+    background:var(--glass); border:1px solid var(--glass-brd);
+  }
+  .share-qr{
+    width:150px; height:150px; border-radius:10px;
+    background:#fff; padding:8px;
+  }
+  .share-copy-btn{
+    width:100%; padding:10px; border-radius:9px; cursor:pointer;
+    border:1px solid var(--glass-brd); background:rgba(255,255,255,0.04);
+    color:var(--text-hi); font-family:var(--mono); font-size:12.5px;
+    transition:border-color .15s ease;
+  }
+  .share-copy-btn:hover{ border-color:rgba(62,232,255,0.4); }
+  .share-copy-btn.copied{ color:var(--green); border-color:var(--green); }
+
+  /* ---------- Watermark removal tool ---------- */
+  .wm-overlay{
+    position:fixed; inset:0; z-index:55;
+    background:rgba(4,6,12,0.72); backdrop-filter:blur(5px);
+    display:flex; align-items:flex-start; justify-content:center;
+    padding:6vh 16px 30px; overflow-y:auto;
+    opacity:0; pointer-events:none; transition:opacity .18s ease;
+  }
+  .wm-overlay.open{ opacity:1; pointer-events:auto; }
+  .wm-modal{
+    width:100%; max-width:420px;
+    background:linear-gradient(180deg, #10131f, #0b0e17);
+    border:1px solid var(--glass-brd); border-radius:16px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(62,232,255,0.08);
+    overflow:hidden;
+  }
+  .wm-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 16px; border-bottom:1px solid var(--glass-brd);
+  }
+  .wm-head-title{ display:flex; align-items:center; gap:9px; font-size:14px; font-weight:600; }
+  .wm-head-title svg{ width:17px; height:17px; color:var(--cyan); }
+  .wm-close{
+    width:26px; height:26px; border-radius:8px; border:1px solid var(--glass-brd);
+    background:rgba(255,255,255,0.04); color:var(--text-lo);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .wm-close:hover{ color:var(--text-hi); border-color:rgba(62,232,255,0.4); }
+  .wm-body{ padding:16px; }
+  .wm-note{
+    font-size:11px; line-height:1.6; color:var(--text-lo);
+    background:rgba(255,255,255,0.03); border:1px solid var(--glass-brd);
+    border-radius:10px; padding:10px 12px; margin-bottom:14px;
+  }
+  .wm-drop{
+    border:1.5px dashed var(--glass-brd); border-radius:12px;
+    padding:26px 14px; text-align:center; cursor:pointer;
+    color:var(--text-lo); font-size:12.5px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .wm-drop:hover{ border-color:rgba(62,232,255,0.4); background:rgba(62,232,255,0.04); }
+  .wm-drop svg{ width:24px; height:24px; margin-bottom:8px; color:var(--cyan); }
+  .wm-stage{ display:none; }
+  .wm-stage.active{ display:block; }
+  .wm-canvas-wrap{
+    position:relative; width:100%; border-radius:10px; overflow:hidden;
+    background:repeating-conic-gradient(#12141c 0% 25%, #0c0e15 0% 50%) 50% / 16px 16px;
+    touch-action:none;
+  }
+  .wm-canvas-wrap canvas{ width:100%; display:block; cursor:crosshair; }
+  .wm-tools{
+    display:flex; align-items:center; gap:10px; margin-top:12px; flex-wrap:wrap;
+  }
+  .wm-brush-row{ display:flex; align-items:center; gap:8px; flex:1; min-width:150px; }
+  .wm-brush-row label{ font-size:11px; color:var(--text-lo); white-space:nowrap; }
+  .wm-brush-row input[type="range"]{ flex:1; accent-color:var(--cyan); }
+  .wm-btn{
+    font-family:inherit; font-size:12px; font-weight:600; cursor:pointer;
+    padding:9px 13px; border-radius:9px; border:1px solid var(--glass-brd);
+    background:rgba(255,255,255,0.04); color:var(--text-hi);
+    display:flex; align-items:center; gap:6px; white-space:nowrap;
+  }
+  .wm-btn:hover{ border-color:rgba(62,232,255,0.4); }
+  .wm-btn svg{ width:14px; height:14px; }
+  .wm-btn.primary{
+    background:linear-gradient(135deg, var(--cyan), var(--purple)); border:none; color:#04121a;
+  }
+  .wm-actions{ display:flex; gap:8px; margin-top:12px; }
+  .wm-actions .wm-btn{ flex:1; justify-content:center; }
+  .wm-hint{ font-size:10px; color:#5c6280; text-align:center; margin-top:10px; }
+
+  /* ---------- Visit counter ---------- */
+  .visit-card{
+    width:100%; margin-top:18px;
+    font-family:var(--mono);
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--glass-brd); border-radius:12px;
+    overflow:hidden; backdrop-filter:blur(14px);
+  }
+  .visit-card-head{
+    display:flex; align-items:center; gap:6px;
+    padding:9px 12px; background:rgba(255,255,255,0.03);
+    border-bottom:1px solid var(--glass-brd);
+    font-size:10.5px; color:var(--text-lo); letter-spacing:0.4px;
+  }
+  .visit-card-body{
+    display:flex; padding:14px; gap:10px;
+  }
+  .visit-stat{
+    flex:1; text-align:center; padding:8px 6px; border-radius:9px;
+    background:rgba(255,255,255,0.02); border:1px solid var(--glass-brd);
+  }
+  .visit-stat .v-num{
+    font-size:20px; font-weight:700; color:var(--text-hi);
+    background:linear-gradient(90deg, var(--cyan), var(--purple));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    font-variant-numeric:tabular-nums;
+    transition:opacity .2s ease;
+  }
+  .visit-stat .v-label{
+    margin-top:4px; font-size:9.5px; letter-spacing:0.4px; text-transform:uppercase;
+    color:var(--text-lo);
+  }
+  .visit-note{
+    padding:0 14px 12px; font-size:9.5px; color:#5c6280; letter-spacing:0.2px;
+  }
+  .online-row{
+    display:flex; align-items:center; gap:9px;
+    padding:0 14px 14px;
+  }
+  .online-avatars{ display:flex; }
+  .online-avatars .oa{
+    width:22px; height:22px; border-radius:50%; margin-left:-7px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:9px; font-weight:700;
+    color:#fff; border:2px solid var(--bg-1);
+    background:linear-gradient(135deg, var(--cyan), var(--purple));
+  }
+  .online-avatars .oa:first-child{ margin-left:0; }
+  .online-text{
+    font-size:10.5px; color:var(--text-lo); font-family:var(--mono);
+  }
+  .online-text b{ color:var(--green); }
+
+  /* ---------- Server status card ---------- */
+  .server-card{
+    width:100%; margin-top:26px;
+    font-family:var(--mono);
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--glass-brd); border-radius:12px;
+    overflow:hidden; backdrop-filter:blur(14px);
+  }
+  .server-card-head{
+    display:flex; align-items:center; gap:6px;
+    padding:9px 12px; background:rgba(255,255,255,0.03);
+    border-bottom:1px solid var(--glass-brd);
+    font-size:10.5px; color:var(--text-lo); letter-spacing:0.4px;
+  }
+  .server-dot{ width:7px; height:7px; border-radius:50%; }
+  .server-dot.red{ background:#ff5f56; }
+  .server-dot.yellow{ background:#ffbd2e; }
+  .server-dot.green{ background:#27c93f; }
+  .server-card-path{ margin-left:6px; }
+  .server-card-body{ padding:12px 14px; font-size:11.5px; line-height:1.9; }
+  .server-line{ display:flex; justify-content:space-between; gap:10px; color:var(--text-lo); }
+  .server-line b{ color:var(--text-hi); font-weight:500; }
+  .server-line .ok{ color:var(--green); }
+  .server-line .flag{ margin-right:4px; }
+  .server-line .blip{
+    display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:var(--green); box-shadow:0 0 6px var(--green);
+    margin-right:5px; animation:blink 1.6s ease-in-out infinite;
+  }
+  .server-note{
+    margin-top:6px; font-size:9.5px; color:#5c6280; letter-spacing:0.2px;
+  }
+
+  /* ---------- Avatar ---------- */
+  .avatar-shell{
+    position:relative; width:118px; height:118px; margin-bottom:18px;
+  }
+  .avatar-ring{
+    position:absolute; inset:-6px; border-radius:50%;
+    background:conic-gradient(from 0deg, var(--cyan), var(--purple), var(--magenta), var(--cyan));
+    filter:blur(0.3px);
+  }
+  .avatar-ring::after{
+    content:""; position:absolute; inset:3px; border-radius:50%;
+    background:var(--bg-1);
+  }
+  .avatar{
+    position:absolute; inset:8px; border-radius:50%; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,#1a1f2e,#0d0f18);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .avatar canvas, .avatar img{ width:100%; height:100%; display:block; object-fit:contain; }
+  .avatar img{ background:linear-gradient(135deg,#1a1f2e,#0d0f18); }
+  .avatar img.img-hidden{ display:none; }
+  .avatar-fallback{
+    display:none; align-items:center; justify-content:center;
+    width:100%; height:100%; position:absolute; inset:0;
+    font-family:var(--mono); font-weight:700; letter-spacing:0.5px;
+    font-size:clamp(24px, 9vw, 34px); color:var(--text-hi);
+    background:linear-gradient(135deg, rgba(155,92,255,0.35), rgba(62,232,255,0.25));
+  }
+  .avatar-fallback.show{ display:flex; }
+  .avatar-glow{
+    position:absolute; inset:-18px; border-radius:50%;
+    background:radial-gradient(circle, rgba(62,232,255,0.35), transparent 70%);
+    filter:blur(14px); z-index:-1;
+    opacity:0.7;
+  }
+
+  /* ---------- Name & badge ---------- */
+  .name-row{
+    display:flex; align-items:center; gap:7px; margin-top:2px;
+  }
+  .name{
+    font-size:22px; font-weight:700; letter-spacing:0.2px;
+    background:linear-gradient(90deg, var(--text-hi), var(--cyan) 120%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .badge{ width:19px; height:19px; flex:0 0 auto; display:inline-block; }
+  .handle{
+    margin-top:6px; font-size:13.5px; color:var(--text-lo); letter-spacing:0.3px;
+  }
+  .pill-row{
+    display:flex; gap:8px; margin-top:18px; flex-wrap:wrap; justify-content:center;
+  }
+  .pill{
+    font-size:11.5px; padding:6px 12px; border-radius:100px;
+    border:1px solid var(--glass-brd); background:var(--glass);
+    color:var(--text-lo); letter-spacing:0.3px;
+  }
+
+  /* ---------- Links ---------- */
+  .links{
+    width:100%; margin-top:30px; display:flex; flex-direction:column; gap:12px;
+  }
+  .link-card{
+    position:relative;
+    display:flex; align-items:center; gap:14px;
+    padding:14px 16px;
+    background:var(--glass);
+    border:1px solid var(--glass-brd);
+    border-radius:14px;
+    backdrop-filter:blur(14px);
+    text-decoration:none; color:var(--text-hi);
+    transition:transform .18s ease, border-color .18s ease, background .18s ease;
+    overflow:hidden;
+  }
+  .link-card::before{
+    content:""; position:absolute; inset:0; border-radius:14px; padding:1px;
+    background:linear-gradient(120deg, transparent, rgba(62,232,255,0.0), transparent);
+    opacity:0; transition:opacity .25s ease;
+  }
+  .link-card:hover{
+    transform:translateY(-2px);
+    border-color:rgba(62,232,255,0.35);
+    background:rgba(255,255,255,0.07);
+  }
+  .link-card:hover::before{ opacity:1; }
+  .link-ico{
+    width:38px; height:38px; flex:0 0 auto; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--glass-brd);
+  }
+  .link-ico svg{ width:18px; height:18px; }
+  .link-body{ display:flex; flex-direction:column; gap:1px; flex:1; min-width:0; }
+  .link-title{ font-size:14.5px; font-weight:600; }
+  .link-sub{ font-size:11.5px; color:var(--text-lo); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .link-arrow{ color:var(--text-lo); font-size:15px; flex:0 0 auto; transition:transform .18s ease, color .18s ease; }
+  .link-card:hover .link-arrow{ transform:translateX(3px); color:var(--cyan); }
+
+  .link-card.featured{
+    border-color:rgba(155,92,255,0.4);
+    background:linear-gradient(120deg, rgba(155,92,255,0.10), rgba(62,232,255,0.06));
+  }
+  .link-card.featured .link-ico{ background:linear-gradient(135deg, var(--purple), var(--cyan)); border:none; }
+  .link-card.featured .link-ico svg{ filter:brightness(0) invert(1); }
+
+  /* ---------- Donate ---------- */
+  .donate-section{ width:100%; margin-top:30px; }
+  .donate-card{
+    width:100%; background:var(--glass); border:1px solid var(--glass-brd);
+    border-radius:18px; padding:20px; backdrop-filter:blur(14px);
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .donate-card::before{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background:radial-gradient(500px 220px at 50% -10%, rgba(255,79,216,0.14), transparent 60%);
+  }
+  .donate-title{ font-size:15px; font-weight:700; margin-bottom:4px; }
+  .donate-sub{ font-size:12px; color:var(--text-lo); margin-bottom:16px; line-height:1.6; max-width:320px; }
+  .donate-qr-wrap{
+    width:100%; max-width:260px; border-radius:16px; overflow:hidden;
+    border:1px solid var(--glass-brd); background:#fff;
+    box-shadow:0 12px 40px rgba(0,0,0,0.35);
+  }
+  .donate-qr-wrap img{ width:100%; height:auto; display:block; }
+  .donate-qr-fallback{
+    display:none; padding:24px 14px; font-size:11.5px; line-height:1.7;
+    color:var(--text-lo); font-family:var(--mono); background:#12141c;
+  }
+  .donate-qr-wrap.qr-broken img{ display:none; }
+  .donate-qr-wrap.qr-broken .donate-qr-fallback{ display:block; }
+  .donate-info{
+    width:100%; margin-top:16px; display:flex; flex-direction:column; gap:8px;
+  }
+  .donate-row{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:10px 14px; border-radius:11px;
+    background:rgba(255,255,255,0.04); border:1px solid var(--glass-brd);
+    font-size:12.5px; text-align:left;
+  }
+  .donate-row .d-label{ color:var(--text-lo); font-family:var(--mono); font-size:10.5px; letter-spacing:0.3px; text-transform:uppercase; }
+  .donate-row .d-value{ font-weight:600; color:var(--text-hi); font-size:13.5px; word-break:break-word; }
+  .donate-copy-btn{
+    flex:0 0 auto; font-family:inherit; font-size:11.5px; font-weight:600; cursor:pointer;
+    padding:8px 12px; border-radius:9px; border:1px solid var(--glass-brd);
+    background:rgba(255,255,255,0.06); color:var(--text-hi);
+    transition:border-color .15s ease, background .15s ease, color .15s ease;
+    white-space:nowrap;
+  }
+  .donate-copy-btn:hover{ border-color:rgba(62,232,255,0.4); }
+  .donate-copy-btn.copied{ color:var(--green); border-color:rgba(79,251,146,0.5); background:rgba(79,251,146,0.08); }
+  .donate-hint{ margin-top:14px; font-size:10.5px; color:#5c6280; line-height:1.7; }
+
+  /* ---------- Section label (shared) ---------- */
+  .section-label{
+    display:flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:10.5px; letter-spacing:1.2px; text-transform:uppercase;
+    color:var(--text-lo); margin-bottom:10px; padding-left:2px;
+  }
+  .section-label b{ color:var(--cyan); font-weight:600; }
+  .section-label::after{
+    content:""; flex:1; height:1px;
+    background:linear-gradient(90deg, var(--glass-brd), transparent);
+  }
+
+  footer{
+    margin-top:38px; text-align:center;
+  }
+  .footer-line{
+    font-size:11px; letter-spacing:0.5px; color:#5c6280;
+  }
+  .footer-line span{ color:var(--cyan); }
+
+  @media (prefers-reduced-motion: reduce){
+    .avatar-ring, .avatar-glow{ animation:none; }
+  }
+
+  /* =====================================================
+     RESPONSIVE — tự động co giãn theo mọi kích thước màn hình
+     ===================================================== */
+
+  /* Tablet & màn hình vừa: nới rộng khung nội dung một chút */
+  @media (min-width:600px){
+    .wrap{ max-width:560px; padding:0 32px 80px; }
+    .site-nav{ max-width:560px; }
+    .name{ font-size:24px; }
+    .avatar-shell{ width:132px; height:132px; }
+    .donate-qr-wrap{ max-width:280px; }
+  }
+
+  /* Desktop / màn hình lớn: khung rộng hơn, chữ dễ đọc hơn */
+  @media (min-width:900px){
+    .wrap{ max-width:620px; padding:0 36px 90px; }
+    .site-nav{ max-width:620px; }
+    .tagline{ max-width:400px; }
+  }
+
+  /* Điện thoại tiêu chuẩn (≤480px): siết khoảng cách, giữ mọi thứ vừa màn hình */
+  @media (max-width:480px){
+    .wrap{ padding:0 16px 56px; }
+    .term-topbar{ padding:14px 2px; margin-bottom:26px; gap:8px; flex-wrap:wrap; }
+    .term-brand{ font-size:10px; }
+    .term-hire{ font-size:9.5px; }
+    .cmdk-hint kbd{ display:none; }
+    .site-nav{ font-size:10.5px; }
+    .site-nav a{ padding:6px 10px; }
+    .avatar-shell{ width:100px; height:100px; }
+    .name{ font-size:19px; }
+    .handle{ font-size:12.5px; }
+    .tagline{ font-size:12px; max-width:290px; }
+    .server-card, .links, .donate-section{ margin-top:22px; }
+    .donate-card{ padding:16px; }
+    .donate-qr-wrap{ max-width:220px; }
+    .link-card{ padding:12px 14px; gap:11px; }
+    .link-ico{ width:34px; height:34px; }
+  }
+
+  /* Điện thoại nhỏ / màn hẹp (≤360px, ví dụ iPhone SE, Galaxy Fold ngoài) */
+  @media (max-width:360px){
+    .wrap{ padding:0 12px 48px; }
+    .avatar-shell{ width:88px; height:88px; }
+    .name{ font-size:17px; }
+    .pill{ font-size:10.5px; padding:5px 10px; }
+    .donate-row{ flex-wrap:wrap; }
+    .donate-copy-btn{ width:100%; text-align:center; }
+  }
+
+  /* Màn hình rất thấp (chế độ ngang trên điện thoại) */
+  @media (max-height:480px) and (orientation:landscape){
+    .avatar-shell{ width:80px; height:80px; margin-bottom:10px; }
+    .server-card, .links, .donate-section{ margin-top:16px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="field"></canvas></canvas>
+
+<div class="wrap">
+
+  <div class="term-topbar">
+    <span class="term-brand">LÂM PHÚ QUÝ</span>
+    <div class="term-right">
+      <span class="term-hire"><span class="term-dot"></span>Available for hire</span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Đổi giao diện sáng/tối">🌙</button>
+      <span class="cmdk-hint" id="cmdkTrigger">Cmd Palette <kbd>Ctrl K</kbd></span>
+    </div>
+  </div>
+
+  <nav class="site-nav" id="siteNav">
+    <a href="#profile" class="active">Giới thiệu</a>
+    <a href="#server-status">Server</a>
+    <a href="#links">Liên kết</a>
+    <a href="#donate">Ủng hộ</a>
+    <a href="#contact">Liên hệ</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#share">Chia sẻ</a>
+  </nav>
+
+  <div class="avatar-shell" id="profile">
+    <div class="avatar-glow"></div>
+    <div class="avatar-ring"></div>
+    <div class="avatar" id="avatarBox">
+      <img id="avatarImg" src="https://cdn.upanhlaylink.com/i/3nmCg52L.jpg" alt="Ảnh đại diện Lâm Phú Quý" loading="eager" decoding="async" referrerpolicy="no-referrer">
+      <span class="avatar-fallback" id="avatarFallback" aria-hidden="true">LPQ</span>
+    </div>
+  </div>
+
+  <div class="name-row">
+    <span class="name">Lâm Phú Quý</span>
+    <svg class="badge" viewBox="0 0 24 24" fill="none" aria-label="Đã xác minh">
+      <path d="M12 2l2.4 1.2 2.66-.4 1.4 2.3 2.3 1.4-.4 2.66L21.6 12l-1.24 2.44.4 2.66-2.3 1.4-1.4 2.3-2.66-.4L12 22l-2.4-1.2-2.66.4-1.4-2.3-2.3-1.4.4-2.66L2.4 12l1.24-2.44-.4-2.66 2.3-1.4 1.4-2.3 2.66.4L12 2z" fill="#2f9bff"/>
+      <path d="M8.2 12.3l2.4 2.4 5.2-5.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="handle">@bequydongnai</div>
+
+  <p class="tagline"><span class="prompt">$</span> <span id="typeTarget"></span><span class="cursor"></span></p>
+
+  <div class="pill-row">
+    <span class="pill">🇻🇳 Đồng Nai</span>
+    <span class="pill">Web Dev</span>
+    <span class="pill">Design</span>
+  </div>
+
+  <div class="server-card" id="server-status">
+    <div class="server-card-head">
+      <span class="server-dot red"></span>
+      <span class="server-dot yellow"></span>
+      <span class="server-dot green"></span>
+      <span class="server-card-path">bash — quy@edge:~</span>
+    </div>
+    <div class="server-card-body">
+      <div class="server-line"><span><span class="blip"></span>Region</span> <b><span class="flag">🇯🇵</span>Japan · Tokyo</b></div>
+      <div class="server-line"><span>Node</span> <b>JP-TOKYO-EDGE-01</b></div>
+      <div class="server-line"><span>Status</span> <b class="ok">● Online</b></div>
+      <div class="server-line"><span>Latency</span> <b id="latency">— ms</b></div>
+      <div class="server-note">// hiển thị minh hoạ cho giao diện, không phải máy chủ thật</div>
+    </div>
+  </div>
+
+  <div class="visit-card" id="visitCard">
+    <div class="visit-card-head">
+      <span class="server-dot green"></span>
+      <span class="server-card-path">stats — luot-truy-cap.log</span>
+    </div>
+    <div class="visit-card-body">
+      <div class="visit-stat">
+        <div class="v-num" id="visitToday">—</div>
+        <div class="v-label">Hôm nay</div>
+      </div>
+      <div class="visit-stat">
+        <div class="v-num" id="visitTotal">—</div>
+        <div class="v-label">Tổng lượt truy cập</div>
+      </div>
+    </div>
+    <div class="visit-note">// số liệu minh hoạ cho giao diện, tự tăng ngẫu nhiên</div>
+    <div class="online-row" id="onlineRow">
+      <div class="online-avatars" id="onlineAvatars"></div>
+      <span class="online-text"><b id="onlineCount">3</b> người đang online</span>
+    </div>
+  </div>
+
+  <div class="links" id="links">
+    <div class="section-label"><b>01</b> // Liên kết</div>
+
+    <a class="link-card featured" href="#" id="openWmTool">
+      <div class="link-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3l6 6-11 11H4v-6L15 3z"/><path d="M13 5l6 6"/></svg>
+      </div>
+      <div class="link-body">
+        <div class="link-title">Công cụ xoá logo / watermark</div>
+        <div class="link-sub">Tẩy logo AI (Gemini...) ngay trên trình duyệt</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a class="link-card" href="https://www.facebook.com/share/19WeSZFMLb/" target="_blank" rel="noopener">
+      <div class="link-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9b5cff" stroke-width="2"><path d="M22 12a10 10 0 11-20 0 10 10 0 0120 0z"/><path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20z"/></svg>
+      </div>
+      <div class="link-body">
+        <div class="link-title">Facebook</div>
+        <div class="link-sub">Trang cá nhân Facebook</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a class="link-card" href="https://youtube.com/@bequydongnai?si=xe2ZT4BXkylfX3yU" target="_blank" rel="noopener">
+      <div class="link-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ff4fd8" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M9 10l6 3-6 3v-6z" fill="#ff4fd8" stroke="none"/></svg>
+      </div>
+      <div class="link-body">
+        <div class="link-title">YouTube</div>
+        <div class="link-sub">Video hướng dẫn &amp; giới thiệu code</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a class="link-card" id="contact" href="https://zalo.me/84817813259" target="_blank" rel="noopener">
+      <div class="link-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3ee8ff" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <div class="link-body">
+        <div class="link-title">Zalo / Liên hệ</div>
+        <div class="link-sub">Tư vấn dự án &amp; báo giá</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+  </div>
+
+  <div class="donate-section" id="donate">
+    <div class="section-label"><b>02</b> // Ủng hộ</div>
+    <div class="donate-card">
+      <div class="donate-title">☕ Mời Quý một ly cà phê</div>
+      <div class="donate-sub">Nếu website hoặc source code hữu ích với bạn, một khoản ủng hộ nhỏ sẽ giúp mình có thêm động lực duy trì &amp; phát triển thêm nhiều sản phẩm mới.</div>
+
+      <div class="donate-qr-wrap">
+        <img id="donateQrImg" src="https://cdn.upanhlaylink.com/i/z4J17AUR.jpg" alt="Mã QR VietQR chuyển khoản MB Bank cho Lâm Phú Quý" loading="lazy" referrerpolicy="no-referrer">
+        <div class="donate-qr-fallback" id="donateQrFallback">Không tải được ảnh QR — vui lòng chuyển khoản theo thông tin bên dưới</div>
+      </div>
+
+      <div class="donate-info">
+        <div class="donate-row">
+          <div>
+            <div class="d-label">Ngân hàng</div>
+            <div class="d-value">MB Bank (Quân đội)</div>
+          </div>
+        </div>
+        <div class="donate-row">
+          <div>
+            <div class="d-label">Chủ tài khoản</div>
+            <div class="d-value">LÂM PHÚ QUÝ</div>
+          </div>
+        </div>
+        <div class="donate-row">
+          <div>
+            <div class="d-label">Số tài khoản</div>
+            <div class="d-value" id="donateAcc">72087427062006</div>
+          </div>
+          <button class="donate-copy-btn" id="donateCopyBtn" type="button">Sao chép</button>
+        </div>
+      </div>
+
+      <div class="donate-hint">Quét mã QR bằng app ngân hàng bất kỳ (hỗ trợ VietQR / Napas 247) hoặc chuyển khoản thủ công theo thông tin phía trên.</div>
+    </div>
+  </div>
+
+  <div class="timeline-section" id="timeline">
+    <div class="section-label"><b>03</b> // Timeline</div>
+    <div class="timeline-year">2026</div>
+    <ul class="timeline-list">
+      <li><span class="t-dot"></span>Ra mắt Lâm Phú Quý Bio</li>
+      <li><span class="t-dot"></span>Phát hành source code mới</li>
+      <li><span class="t-dot"></span>Ra mắt công cụ AI</li>
+      <li><span class="t-dot"></span>Phát hành MV mới</li>
+    </ul>
+    <div class="timeline-note">// cập nhật các mốc thật của bạn tại đây</div>
+  </div>
+
+  <div class="share-section" id="share">
+    <div class="section-label"><b>04</b> // Quét để mở Bio</div>
+    <div class="share-card">
+      <img class="share-qr" id="shareQrImg" alt="Mã QR mở trang Bio này" loading="lazy">
+      <button class="share-copy-btn" id="shareCopyBtn" type="button">📋 Sao chép link</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-line">© 2026 <span>Lâm Phú Quý</span> · Bé Quý Đồng Nai</div>
+  </footer>
+
+</div>
+
+<!-- ---------- Command Palette ---------- -->
+<div class="cmdk-overlay" id="cmdkOverlay">
+  <div class="cmdk-modal">
+    <div class="cmdk-input-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Gõ lệnh hoặc tìm điểm đến..." autocomplete="off">
+      <span class="cmdk-esc">ESC</span>
+    </div>
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
+</div>
+
+<!-- ---------- Easter Egg ---------- -->
+<div class="egg-overlay" id="eggOverlay">
+  <div class="egg-box">
+    <div class="egg-tag">QUY PROTOCOL // SECRET FOUND</div>
+    <div class="egg-title">Chào đạo hữu 👋</div>
+    <div class="egg-body">
+      <div class="line">USER: <span class="k">Khách bí ẩn</span></div>
+      <div class="line">SECT: <span class="k">Bé Quý Đồng Nai</span></div>
+      <div class="line">PATH: <span class="k">Fullstack · Design · Nhạc</span></div>
+      <div class="line">STATUS: <span class="k">Đang xây điều thú vị...</span></div>
+      <div class="line" style="margin-top:8px; color:#5c6280;">// Cảm ơn bạn đã gõ "quy" — hẹn gặp ở dự án tiếp theo.</div>
+    </div>
+    <button class="egg-close" id="eggClose">ĐÓNG PROTOCOL</button>
+  </div>
+</div>
+
+<!-- ---------- Watermark / logo removal tool ---------- -->
+<div class="wm-overlay" id="wmOverlay">
+  <div class="wm-modal">
+    <div class="wm-head">
+      <div class="wm-head-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3l6 6-11 11H4v-6L15 3z"/><path d="M13 5l6 6"/></svg>
+        Xoá logo / watermark
+      </div>
+      <div class="wm-close" id="wmClose">✕</div>
+    </div>
+    <div class="wm-body">
+      <div class="wm-note">
+        Công cụ chạy hoàn toàn trên trình duyệt của bạn (không upload lên server). Dùng để làm mờ/xoá watermark góc ảnh (ví dụ logo Gemini) — phù hợp watermark nhỏ, nền đơn giản. Kết quả chỉ mang tính tương đối, không phải phục dựng bằng AI.
+      </div>
+
+      <div class="wm-stage active" id="wmUploadStage">
+        <label class="wm-drop" id="wmDropLabel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
+          <div>Chạm để chọn ảnh</div>
+          <div style="font-size:10.5px; margin-top:3px; opacity:0.7;">JPG / PNG — xử lý ngay trên máy</div>
+          <input type="file" accept="image/*" id="wmFileInput" style="display:none">
+        </label>
+      </div>
+
+      <div class="wm-stage" id="wmEditStage">
+        <div class="wm-canvas-wrap">
+          <canvas id="wmCanvas"></canvas>
+        </div>
+        <div class="wm-tools">
+          <div class="wm-brush-row">
+            <label>Cỡ cọ</label>
+            <input type="range" id="wmBrush" min="10" max="90" value="34">
+          </div>
+          <button class="wm-btn" id="wmAutoCorner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15h6v6"/><path d="M9 9L21 21"/></svg>
+            Tự xoá góc dưới phải
+          </button>
+        </div>
+        <div class="wm-actions">
+          <button class="wm-btn" id="wmReset">Chọn ảnh khác</button>
+          <button class="wm-btn primary" id="wmDownload">Tải ảnh xuống</button>
+        </div>
+        <div class="wm-hint">Kéo/miết ngón tay hoặc chuột lên vùng logo để làm mờ thủ công</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- Avatar loader: fixes case where the external image host
+  // fails to load (blocked/slow on some mobile networks) by swapping
+  // in an initials fallback, and recovering automatically if it loads late.
+  (function(){
+    const img = document.getElementById('avatarImg');
+    const fallback = document.getElementById('avatarFallback');
+    if(!img || !fallback) return;
+    let settled = false;
+
+    function showFallback(){
+      if(settled) return;
+      img.classList.add('img-hidden');
+      fallback.classList.add('show');
+    }
+    function showImage(){
+      settled = true;
+      img.classList.remove('img-hidden');
+      fallback.classList.remove('show');
+    }
+
+    img.addEventListener('load', ()=>{
+      if(img.naturalWidth > 0) showImage();
+      else showFallback();
+    });
+    img.addEventListener('error', showFallback);
+
+    // If it's already loaded from cache by the time this runs, use that.
+    if(img.complete){
+      if(img.naturalWidth > 0) showImage();
+      else showFallback();
+    } else {
+      // Slow network: show a graceful fallback after 3.5s instead of a blank circle,
+      // but keep listening in case the real image still arrives.
+      setTimeout(()=>{ if(!settled) showFallback(); }, 3500);
+    }
+  })();
+
+  // ---------- Donate QR loader: same failure-recovery pattern as avatar ----------
+  (function(){
+    const img = document.getElementById('donateQrImg');
+    const wrap = document.getElementById('donateQrFallback') && document.querySelector('.donate-qr-wrap');
+    if(!img || !wrap) return;
+    img.addEventListener('error', ()=> wrap.classList.add('qr-broken'));
+  })();
+
+  // ---------- Visit counter (decorative — see .visit-note disclaimer) ----------
+  (function(){
+    const elToday = document.getElementById('visitToday');
+    const elTotal = document.getElementById('visitTotal');
+    if(!elToday || !elTotal) return;
+
+    const STORE_KEY = 'lpq_visit_stats_v1';
+    const todayKey = new Date().toDateString();
+
+    function load(){
+      try{ return JSON.parse(localStorage.getItem(STORE_KEY)); }
+      catch(e){ return null; }
+    }
+    function save(s){
+      try{ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }catch(e){}
+    }
+    function fmt(n){ return n.toLocaleString('vi-VN'); }
+
+    let stats = load();
+    if(!stats || typeof stats.total !== 'number'){
+      stats = {
+        total: 12000 + Math.floor(Math.random()*5000),
+        todayDate: todayKey,
+        today: 30 + Math.floor(Math.random()*90)
+      };
+    } else if(stats.todayDate !== todayKey){
+      stats.todayDate = todayKey;
+      stats.today = 20 + Math.floor(Math.random()*60);
+    }
+    // ghi nhận lượt xem hiện tại
+    stats.total += 1;
+    stats.today += 1;
+    save(stats);
+
+    function render(){
+      elToday.textContent = fmt(stats.today);
+      elTotal.textContent = fmt(stats.total);
+    }
+    render();
+
+    function bump(el){
+      el.style.opacity = '0.35';
+      setTimeout(()=>{ el.style.opacity = '1'; }, 160);
+    }
+
+    // giả lập lượt truy cập tăng dần theo thời gian thực khi trang đang mở
+    function scheduleTick(){
+      const delay = 9000 + Math.random()*16000; // 9–25s
+      setTimeout(()=>{
+        if(document.visibilityState === 'visible'){
+          stats.total += 1 + Math.floor(Math.random()*3);
+          if(Math.random() < 0.7) stats.today += 1;
+          save(stats);
+          render();
+          bump(elTotal); bump(elToday);
+        }
+        scheduleTick();
+      }, delay);
+    }
+    scheduleTick();
+  })();
+
+  // ---------- "Đang online" (decorative, ẩn danh — không gắn tên người thật) ----------
+  (function(){
+    const avatarsEl = document.getElementById('onlineAvatars');
+    const countEl = document.getElementById('onlineCount');
+    if(!avatarsEl || !countEl) return;
+
+    function render(n){
+      countEl.textContent = n;
+      avatarsEl.innerHTML = '';
+      const shown = Math.min(n, 4);
+      for(let i = 0; i < shown; i++){
+        const d = document.createElement('div');
+        d.className = 'oa';
+        d.textContent = '👤';
+        avatarsEl.appendChild(d);
+      }
+    }
+
+    let n = 2 + Math.floor(Math.random()*3); // 2–4 người, minh hoạ
+    render(n);
+
+    setInterval(()=>{
+      if(document.visibilityState !== 'visible') return;
+      n = Math.max(1, Math.min(6, n + (Math.random() < 0.5 ? -1 : 1)));
+      render(n);
+    }, 7000 + Math.random()*6000);
+  })();
+
+  // ---------- Donate: copy account number ----------
+  (function(){
+    const btn = document.getElementById('donateCopyBtn');
+    const val = document.getElementById('donateAcc');
+    if(!btn || !val) return;
+    btn.addEventListener('click', async ()=>{
+      const text = val.textContent.trim();
+      try{
+        if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        const original = btn.textContent;
+        btn.textContent = 'Đã chép ✓';
+        btn.classList.add('copied');
+        setTimeout(()=>{ btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+      }catch(err){
+        btn.textContent = 'Không chép được';
+        setTimeout(()=>{ btn.textContent = 'Sao chép'; }, 1800);
+      }
+    });
+  })();
+
+  // ---------- Sticky nav: smooth active-link highlighting ----------
+  const navLinks = [...document.querySelectorAll('.site-nav a')];
+  const navTargets = navLinks
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  if('IntersectionObserver' in window && navTargets.length){
+    const spy = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const id = '#' + entry.target.id;
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    navTargets.forEach(t => spy.observe(t));
+  }
+
+  // ---------- Ambient particle field ----------
+  const field = document.getElementById('field');
+  const fctx = field.getContext('2d');
+  let w, h, particles = [];
+
+  function resize(){
+    w = field.width = window.innerWidth;
+    h = field.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const N = Math.min(70, Math.floor((window.innerWidth*window.innerHeight)/18000));
+  const colors = ['#3ee8ff','#9b5cff','#ff4fd8'];
+  for(let i=0;i<N;i++){
+    particles.push({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: Math.random()*1.6+0.4,
+      vx: (Math.random()-0.5)*0.15,
+      vy: (Math.random()-0.5)*0.15,
+      c: colors[i%3],
+      a: Math.random()*0.5+0.15
+    });
+  }
+
+  function tick(){
+    fctx.clearRect(0,0,w,h);
+    for(const p of particles){
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0) p.x=w; if(p.x>w) p.x=0;
+      if(p.y<0) p.y=h; if(p.y>h) p.y=0;
+      fctx.beginPath();
+      fctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      fctx.fillStyle = p.c;
+      fctx.globalAlpha = p.a;
+      fctx.fill();
+    }
+    fctx.globalAlpha = 1;
+    requestAnimationFrame(tick);
+  }
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    tick();
+  }
+
+  // ---------- Typewriter tagline ----------
+  const typeTarget = document.getElementById('typeTarget');
+  const typeLines = [
+    "Fullstack Developer · UI/UX Designer",
+    "Chuyên source code, website trọn gói",
+    "Nhận dự án — phản hồi nhanh qua Zalo"
+  ];
+  let tLine = 0, tChar = 0, deleting = false;
+  function typeTick(){
+    const full = typeLines[tLine];
+    if(!deleting){
+      tChar++;
+      typeTarget.textContent = full.slice(0, tChar);
+      if(tChar === full.length){
+        deleting = true;
+        setTimeout(typeTick, 1600);
+        return;
+      }
+    } else {
+      tChar--;
+      typeTarget.textContent = full.slice(0, tChar);
+      if(tChar === 0){
+        deleting = false;
+        tLine = (tLine + 1) % typeLines.length;
+      }
+    }
+    setTimeout(typeTick, deleting ? 22 : 42);
+  }
+  typeTick();
+
+  // ---------- Command palette (Ctrl/Cmd + K) ----------
+  const cmdkOverlay = document.getElementById('cmdkOverlay');
+  const cmdkInput = document.getElementById('cmdkInput');
+  const cmdkList = document.getElementById('cmdkList');
+  const cmdkTrigger = document.getElementById('cmdkTrigger');
+
+  const commands = [
+    { label: "Xem liên kết", sub: "cuộn tới", action: () => scrollToEl('.links') },
+    { label: "Mở cửa hàng source code", sub: "link", action: () => window.open('#', '_blank') },
+    { label: "Liên hệ Zalo", sub: "link", action: () => window.open('https://zalo.me/84817813259', '_blank') },
+    { label: "Ủng hộ / Donate", sub: "cuộn tới", action: () => scrollToEl('#donate') },
+    { label: "Về đầu trang", sub: "cuộn tới", action: () => window.scrollTo({top:0, behavior:'smooth'}) }
+  ];
+
+  function scrollToEl(sel){
+    const el = document.querySelector(sel);
+    if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  let cmdActive = 0;
+
+  function renderCmdList(filter){
+    const q = (filter||'').toLowerCase();
+    const items = commands.filter(c => c.label.toLowerCase().includes(q));
+    cmdActive = 0;
+    if(items.length === 0){
+      cmdkList.innerHTML = '<div class="cmdk-empty">Không tìm thấy lệnh phù hợp</div>';
+      return;
+    }
+    cmdkList.innerHTML = items.map((c, i) => `
+      <div class="cmdk-item ${i===0 ? 'active' : ''}" data-i="${i}">
+        <svg class="k-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        ${c.label}
+        <span class="k-sub">${c.sub}</span>
+      </div>
+    `).join('');
+    [...cmdkList.querySelectorAll('.cmdk-item')].forEach(el=>{
+      el.addEventListener('click', ()=>{
+        items[parseInt(el.dataset.i)].action();
+        closeCmdk();
+      });
+    });
+    cmdkList._items = items;
+  }
+
+  function openCmdk(){
+    cmdkOverlay.classList.add('open');
+    cmdkInput.value = '';
+    renderCmdList('');
+    setTimeout(()=> cmdkInput.focus(), 30);
+  }
+  function closeCmdk(){
+    cmdkOverlay.classList.remove('open');
+  }
+
+  cmdkTrigger.addEventListener('click', openCmdk);
+  cmdkOverlay.addEventListener('click', (e)=>{ if(e.target === cmdkOverlay) closeCmdk(); });
+  cmdkInput.addEventListener('input', ()=> renderCmdList(cmdkInput.value));
+  cmdkInput.addEventListener('keydown', (e)=>{
+    const items = cmdkList._items || [];
+    const nodes = [...cmdkList.querySelectorAll('.cmdk-item')];
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      cmdActive = Math.min(cmdActive + 1, items.length - 1);
+      nodes.forEach((n,i)=> n.classList.toggle('active', i===cmdActive));
+    } else if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      cmdActive = Math.max(cmdActive - 1, 0);
+      nodes.forEach((n,i)=> n.classList.toggle('active', i===cmdActive));
+    } else if(e.key === 'Enter'){
+      if(items[cmdActive]){ items[cmdActive].action(); closeCmdk(); }
+    }
+  });
+
+  // ---------- Easter egg: type "quy" anywhere to reveal ----------
+  const eggOverlay = document.getElementById('eggOverlay');
+  const eggClose = document.getElementById('eggClose');
+  let eggBuffer = '';
+  const eggWord = 'quy';
+
+  function openEgg(){ eggOverlay.classList.add('open'); }
+  function closeEgg(){ eggOverlay.classList.remove('open'); }
+  eggClose.addEventListener('click', closeEgg);
+  eggOverlay.addEventListener('click', (e)=>{ if(e.target === eggOverlay) closeEgg(); });
+
+  document.addEventListener('keydown', (e)=>{
+    const tag = (e.target.tagName || '').toLowerCase();
+    const typingInField = tag === 'input' || tag === 'textarea';
+
+    // Ctrl/Cmd + K opens command palette from anywhere
+    if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k'){
+      e.preventDefault();
+      cmdkOverlay.classList.contains('open') ? closeCmdk() : openCmdk();
+      return;
+    }
+    if(e.key === 'Escape'){
+      closeCmdk();
+      closeEgg();
+      return;
+    }
+    if(typingInField) return;
+
+    if(/^[a-zA-Z]$/.test(e.key)){
+      eggBuffer = (eggBuffer + e.key.toLowerCase()).slice(-eggWord.length);
+      if(eggBuffer === eggWord){
+        openEgg();
+        eggBuffer = '';
+      }
+    }
+  });
+
+  // ---------- Decorative server status (visual only, not a real connection) ----------
+  const latencyEl = document.getElementById('latency');
+  function pulseLatency(){
+    const ms = 24 + Math.floor(Math.random() * 30);
+    latencyEl.textContent = ms + ' ms';
+  }
+  pulseLatency();
+  setInterval(pulseLatency, 2400);
+
+  // ---------- Watermark / logo removal tool ----------
+  const wmTrigger = document.getElementById('openWmTool');
+  const wmOverlay = document.getElementById('wmOverlay');
+  const wmClose = document.getElementById('wmClose');
+  const wmFileInput = document.getElementById('wmFileInput');
+  const wmUploadStage = document.getElementById('wmUploadStage');
+  const wmEditStage = document.getElementById('wmEditStage');
+  const wmCanvas = document.getElementById('wmCanvas');
+  const wmCtx = wmCanvas.getContext('2d');
+  const wmBrush = document.getElementById('wmBrush');
+  const wmAutoCorner = document.getElementById('wmAutoCorner');
+  const wmReset = document.getElementById('wmReset');
+  const wmDownload = document.getElementById('wmDownload');
+
+  function openWm(){ wmOverlay.classList.add('open'); }
+  function closeWm(){ wmOverlay.classList.remove('open'); }
+
+  wmTrigger.addEventListener('click', (e)=>{ e.preventDefault(); openWm(); });
+  wmClose.addEventListener('click', closeWm);
+  wmOverlay.addEventListener('click', (e)=>{ if(e.target === wmOverlay) closeWm(); });
+
+  function loadImageToCanvas(file){
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = ()=>{
+      const MAX = 1400;
+      let w = img.naturalWidth, h = img.naturalHeight;
+      if(w > MAX || h > MAX){
+        const scale = MAX / Math.max(w, h);
+        w = Math.round(w * scale); h = Math.round(h * scale);
+      }
+      wmCanvas.width = w; wmCanvas.height = h;
+      wmCtx.drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(url);
+      wmUploadStage.classList.remove('active');
+      wmEditStage.classList.add('active');
+    };
+    img.src = url;
+  }
+
+  wmFileInput.addEventListener('change', ()=>{
+    if(wmFileInput.files && wmFileInput.files[0]) loadImageToCanvas(wmFileInput.files[0]);
+  });
+
+  wmReset.addEventListener('click', ()=>{
+    wmEditStage.classList.remove('active');
+    wmUploadStage.classList.add('active');
+    wmFileInput.value = '';
+  });
+
+  // Simple box-blur applied to a region of the canvas — used both for
+  // the manual brush and the one-click "auto corner" action.
+  function blurRegion(x, y, w, h, passes){
+    x = Math.max(0, Math.floor(x)); y = Math.max(0, Math.floor(y));
+    w = Math.min(Math.floor(w), wmCanvas.width - x);
+    h = Math.min(Math.floor(h), wmCanvas.height - y);
+    if(w <= 0 || h <= 0) return;
+    const radius = 4;
+    for(let p = 0; p < passes; p++){
+      const imgData = wmCtx.getImageData(x, y, w, h);
+      const src = imgData.data;
+      const out = new Uint8ClampedArray(src.length);
+      for(let row = 0; row < h; row++){
+        for(let col = 0; col < w; col++){
+          let r=0,g=0,b=0,a=0,n=0;
+          for(let dy=-radius; dy<=radius; dy+=2){
+            for(let dx=-radius; dx<=radius; dx+=2){
+              const cx = col+dx, cy = row+dy;
+              if(cx>=0 && cx<w && cy>=0 && cy<h){
+                const idx = (cy*w+cx)*4;
+                r+=src[idx]; g+=src[idx+1]; b+=src[idx+2]; a+=src[idx+3]; n++;
+              }
+            }
+          }
+          const oi = (row*w+col)*4;
+          out[oi]=r/n; out[oi+1]=g/n; out[oi+2]=b/n; out[oi+3]=a/n;
+        }
+      }
+      imgData.data.set(out);
+      wmCtx.putImageData(imgData, x, y);
+    }
+  }
+
+  wmAutoCorner.addEventListener('click', ()=>{
+    const w = wmCanvas.width, h = wmCanvas.height;
+    const rw = w * 0.32, rh = h * 0.14;
+    blurRegion(w - rw, h - rh, rw, rh, 5);
+  });
+
+  // ----- manual brush (drag to blur/smear over the logo) -----
+  let wmDrawing = false;
+  function canvasPointFromEvent(e){
+    const rect = wmCanvas.getBoundingClientRect();
+    const p = e.touches ? e.touches[0] : e;
+    const scaleX = wmCanvas.width / rect.width;
+    const scaleY = wmCanvas.height / rect.height;
+    return { x: (p.clientX - rect.left) * scaleX, y: (p.clientY - rect.top) * scaleY };
+  }
+  function brushAt(pt){
+    const size = parseInt(wmBrush.value, 10);
+    blurRegion(pt.x - size/2, pt.y - size/2, size, size, 2);
+  }
+  function wmPointerDown(e){ wmDrawing = true; brushAt(canvasPointFromEvent(e)); e.preventDefault(); }
+  function wmPointerMove(e){ if(!wmDrawing) return; brushAt(canvasPointFromEvent(e)); e.preventDefault(); }
+  function wmPointerUp(){ wmDrawing = false; }
+
+  wmCanvas.addEventListener('mousedown', wmPointerDown);
+  wmCanvas.addEventListener('mousemove', wmPointerMove);
+  window.addEventListener('mouseup', wmPointerUp);
+  wmCanvas.addEventListener('touchstart', wmPointerDown, { passive:false });
+  wmCanvas.addEventListener('touchmove', wmPointerMove, { passive:false });
+  wmCanvas.addEventListener('touchend', wmPointerUp);
+
+  wmDownload.addEventListener('click', ()=>{
+    const link = document.createElement('a');
+    link.download = 'anh-da-xoa-logo.png';
+    link.href = wmCanvas.toDataURL('image/png');
+    link.click();
+  });
+
+  // ---------- Light / Dark theme toggle ----------
+  const themeToggle = document.getElementById('themeToggle');
+  const htmlEl = document.documentElement;
+  function applyTheme(t){
+    if(t === 'light'){
+      htmlEl.setAttribute('data-theme', 'light');
+      themeToggle.textContent = '☀️';
+    } else {
+      htmlEl.removeAttribute('data-theme');
+      themeToggle.textContent = '🌙';
+    }
+  }
+  const savedTheme = localStorage.getItem('lpq-theme') || 'dark';
+  applyTheme(savedTheme);
+  themeToggle.addEventListener('click', ()=>{
+    const next = htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+    localStorage.setItem('lpq-theme', next);
+  });
+
+  // ---------- QR share ----------
+  const shareQrImg = document.getElementById('shareQrImg');
+  const shareCopyBtn = document.getElementById('shareCopyBtn');
+  const pageUrl = window.location.href;
+  shareQrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(pageUrl);
+  shareCopyBtn.addEventListener('click', async ()=>{
+    try{
+      await navigator.clipboard.writeText(pageUrl);
+      shareCopyBtn.textContent = '✅ Đã sao chép!';
+      shareCopyBtn.classList.add('copied');
+      setTimeout(()=>{
+        shareCopyBtn.textContent = '📋 Sao chép link';
+        shareCopyBtn.classList.remove('copied');
+      }, 1800);
+    } catch(err){
+      shareCopyBtn.textContent = 'Không sao chép được — copy thủ công';
+    }
+  });
+</script>
+
+</body>
+</html>
